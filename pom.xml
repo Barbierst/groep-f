@@ -2,10 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.han-yaeger</groupId>
-    <artifactId>tutorial</artifactId>
-    <version>2021.2022.1</version>
-    <name>Yaeger tutorial: Waterworld</name>
+    <groupId>han.groepf.topdownshooter</groupId>
+    <artifactId>groepf</artifactId>
+    <version>1</version>
+    <name>Groep F Top Down Shooter</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
