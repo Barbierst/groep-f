@@ -1,4 +1,6 @@
 package han.groepf.topdownshooter.data.entities.barricade;
 
-public class Barricade {
+import han.groepf.topdownshooter.data.entities.LivingEntity;
+
+public class Barricade extends LivingEntity {
 }

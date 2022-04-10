@@ -1,4 +1,6 @@
 package han.groepf.topdownshooter.data.entities.enemies;
 
-public class Dog {
+import han.groepf.topdownshooter.data.entities.LivingEntity;
+
+public class Dog extends LivingEntity {
 }

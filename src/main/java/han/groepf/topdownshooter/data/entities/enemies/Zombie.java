@@ -1,4 +1,6 @@
 package han.groepf.topdownshooter.data.entities.enemies;
 
-public class Zombie {
+import han.groepf.topdownshooter.data.entities.LivingEntity;
+
+public class Zombie extends LivingEntity {
 }
