@@ -5,7 +5,7 @@ import han.groepf.topdownshooter.data.weapons.IShootable;
 
 public class Gun implements IShootable {
     @Override
-    public void shoot(Projectile projectile) {
+    public void Shoot(Projectile projectile) {
 
     }
 }
