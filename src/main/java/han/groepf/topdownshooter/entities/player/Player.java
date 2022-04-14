@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class Player extends DynamicSpriteEntity implements KeyListener {
 
-    protected Player(String resource, Coordinate2D initialLocation) {
+    public Player(String resource, Coordinate2D initialLocation) {
         super(resource, initialLocation);
     }
 
