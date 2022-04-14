@@ -10,7 +10,7 @@ public class World extends YaegerGame {
 
     @Override
     public void setupGame() {
-        setGameTitle("Working title");
+        setGameTitle("Day-A");
         setSize(new Size(800, 600));
     }
 
