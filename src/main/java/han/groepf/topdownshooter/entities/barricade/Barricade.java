@@ -12,7 +12,7 @@ public class Barricade extends LivingEntity {
 
     /**
      * This constructor abstracts away the resource selection and coordinate creation based on a X-coordinate and passes this on to the super constructor
-     * @param x
+     * @param x The horizontal position for the barricade
      */
     public Barricade(double x, World world) {
         super("sprites/barricade.png", new Coordinate2D(x, 0), 5);

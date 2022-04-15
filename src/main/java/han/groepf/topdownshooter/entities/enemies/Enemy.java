@@ -10,12 +10,12 @@ import java.util.Random;
 
 public abstract class Enemy extends LivingEntity {
 
-    private int damage;
+    private final int damage;
     /**
      * Super class for all enemy types, abstracting away the moveement and the implementation of a livingEntity
-     * @param resource
-     * @param initialPosition
-     * @param speed
+     * @param resource The resource file that is used for the SpriteEntity
+     * @param initialPosition The initial position of the Enemy
+     * @param speed The speed with which the enemy moves in the LEFT direction
      */
     protected Enemy(String resource, Coordinate2D initialPosition, double speed, int damage, int health) {
         super(resource, initialPosition, health);
@@ -25,7 +25,7 @@ public abstract class Enemy extends LivingEntity {
 
     /**
      * Removes the enemy on collision with the barricade
-     * @param collider
+     * @param collider The object that is collided with
      */
     @Override
     public void onHit(Collider collider) {

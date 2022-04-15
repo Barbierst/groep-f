@@ -13,11 +13,11 @@ import han.groepf.topdownshooter.spawners.enemies.EnemySpawner;
 
 public class GameScene extends DynamicScene implements EntitySpawnerContainer {
 
-    private World world;
+    private final World world;
 
     /**
      * The basic game scene in which a controllable player entity, a barricade have been added
-     * @param world
+     * @param world Instance of the current game
      */
     public GameScene(World world) {
         this.world = world;

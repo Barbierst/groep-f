@@ -12,11 +12,11 @@ import javafx.scene.text.FontWeight;
 
 public class MenuScene extends StaticScene {
 
-    private World world;
+    private final World world;
 
     /**
      * Scene in which the user can select start a game, go to the settings menu or quit the game
-     * @param world
+     * @param world Instance of the current game
      */
     public MenuScene(World world) {
         this.world = world;

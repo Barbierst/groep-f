@@ -19,7 +19,7 @@ public class EndScene extends StaticScene {
 
     /**
      * Scene in which the player can restart the game
-     * @param world
+     * @param world Instance of the current game
      */
     public EndScene(World world) {
         this.world = world;
