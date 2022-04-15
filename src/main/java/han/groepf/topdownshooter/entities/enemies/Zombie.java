@@ -4,7 +4,11 @@ import com.github.hanyaeger.api.Coordinate2D;
 
 public class Zombie extends Enemy {
 
-    public Zombie(String resource, Coordinate2D initialLocation) {
-        super(resource, initialLocation);
+    /**
+     * An enemy with low speed
+     * @param initialPosition
+     */
+    public Zombie(Coordinate2D initialPosition) {
+        super("sprites/zombie.png", initialPosition, 1);
     }
 }

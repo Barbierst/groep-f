@@ -5,6 +5,9 @@ import com.github.hanyaeger.api.EntitySpawnerContainer;
 import com.github.hanyaeger.api.scenes.DynamicScene;
 import han.groepf.topdownshooter.World;
 import han.groepf.topdownshooter.entities.barricade.Barricade;
+import han.groepf.topdownshooter.entities.enemies.Car;
+import han.groepf.topdownshooter.entities.enemies.Dog;
+import han.groepf.topdownshooter.entities.enemies.Zombie;
 import han.groepf.topdownshooter.entities.player.Player;
 
 public class GameScene extends DynamicScene implements EntitySpawnerContainer {
@@ -28,6 +31,11 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
     public void setupEntities() {
         addEntity(new Player(new Coordinate2D(getWidth() * 0.1,getHeight() * 0.1)));
         addEntity(new Barricade(getWidth() * 0.15));
+
+        // These are to be spawned in a spawner
+        addEntity(new Zombie(new Coordinate2D(getWidth() * 0.9,getHeight() * 0.3)));
+        addEntity(new Dog(new Coordinate2D(getWidth() * 0.9,getHeight() * 0.5)));
+        addEntity(new Car(new Coordinate2D(getWidth() * 0.9,getHeight() * 0.7)));
     }
 
     @Override
