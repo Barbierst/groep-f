@@ -4,17 +4,30 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
+import han.groepf.topdownshooter.entities.enemies.Enemy;
 
 public abstract class LivingEntity extends DynamicSpriteEntity implements Collided, Collider {
 
-    protected LivingEntity(String resource, Coordinate2D initialLocation) {
+    private int health;
+
+    protected LivingEntity(String resource, Coordinate2D initialLocation, int health) {
         super(resource, initialLocation);
+
+        this.health = health;
     }
 
     @Override
     public void onCollision(Collider collider) {
+        if (collider instanceof Enemy) {
+            health = health - ((Enemy) collider).getDamage();
+        }
 
         this.onHit(collider);
+
+        if (health <= 0) {
+            onDeath();
+            remove();
+        }
     }
 
     /**
@@ -22,4 +35,6 @@ public abstract class LivingEntity extends DynamicSpriteEntity implements Collid
      * @param collider
      */
     public abstract void onHit(Collider collider);
+
+    public abstract void onDeath();
 }

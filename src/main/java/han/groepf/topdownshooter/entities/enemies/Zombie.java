@@ -9,6 +9,6 @@ public class Zombie extends Enemy {
      * @param initialPosition
      */
     public Zombie(Coordinate2D initialPosition) {
-        super("sprites/zombie.png", initialPosition, 1);
+        super("sprites/zombie.png", initialPosition, 1, 1, 1);
     }
 }

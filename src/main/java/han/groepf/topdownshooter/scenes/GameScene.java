@@ -30,7 +30,7 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
     @Override
     public void setupEntities() {
         addEntity(new Player(new Coordinate2D(getWidth() * 0.1,getHeight() * 0.1)));
-        addEntity(new Barricade(getWidth() * 0.15));
+        addEntity(new Barricade(getWidth() * 0.15, this.world));
 
         // These are to be spawned in a spawner
         addEntity(new Zombie(new Coordinate2D(getWidth() * 0.9,getHeight() * 0.3)));
