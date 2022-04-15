@@ -9,6 +9,6 @@ public class Car extends Enemy {
      * @param initialPosition
      */
     public Car(Coordinate2D initialPosition) {
-        super("sprites/car.png", initialPosition, 3);
+        super("sprites/car.png", initialPosition, 3, 2, 2);
     }
 }

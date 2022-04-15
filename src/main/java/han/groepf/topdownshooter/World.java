@@ -2,6 +2,7 @@ package han.groepf.topdownshooter;
 
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
+import han.groepf.topdownshooter.scenes.EndScene;
 import han.groepf.topdownshooter.scenes.GameScene;
 import han.groepf.topdownshooter.scenes.MenuScene;
 
@@ -20,5 +21,6 @@ public class World extends YaegerGame {
     public void setupScenes() {
         addScene(0, new MenuScene(this));
         addScene(1, new GameScene(this));
+        addScene(2, new EndScene(this));
     }
 }
