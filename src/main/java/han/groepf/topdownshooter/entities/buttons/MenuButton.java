@@ -13,8 +13,8 @@ public class MenuButton extends Button{
 
     /**
      * When this button is clicked, the active scene is set to the GameScene (scene 1)
-     * @param mouseButton
-     * @param coordinate2D
+     * @param mouseButton The clicked mouse button
+     * @param coordinate2D /
      */
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {

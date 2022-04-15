@@ -32,9 +32,12 @@ public abstract class LivingEntity extends DynamicSpriteEntity implements Collid
 
     /**
      * Abstract function that is called on a collision this is to be implemented by the subclass.
-     * @param collider
+     * @param collider The object that is collided with
      */
     public abstract void onHit(Collider collider);
 
+    /**
+     * Abstract function that is called when the health of the LivingEntity reaches 0
+     */
     public abstract void onDeath();
 }

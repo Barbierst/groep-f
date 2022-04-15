@@ -15,7 +15,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     /**
      * This constructor abstracts away the resource selection and passes on the initial location to the super constructor
      * Adds friction to stop the player after a key is released
-     * @param initialLocation
+     * @param initialLocation The initial location for the Player
      */
     public Player(Coordinate2D initialLocation) {
         super("sprites/player.png", initialLocation);
@@ -26,7 +26,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
 
     /**
      * Lissen to the pressed key changed event and move the player in the correct direction
-     * @param pressedKeys
+     * @param pressedKeys The pressed keys
      */
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
@@ -43,32 +43,24 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
 
     /**
      * When the player touches a border the speed is set to 0 to prevent leaving the game.
-     * @param sceneBorder
+     * @param sceneBorder The ScheneBorde that is touched
      */
     @Override
     public void notifyBoundaryTouching(SceneBorder sceneBorder) {
         setSpeed(0);
         switch (sceneBorder) {
-            case TOP:
-                setAnchorLocationY(1);
-                break;
-            case BOTTOM:
-                setAnchorLocationY(getSceneHeight() - getHeight() - 1);
-                break;
-            case LEFT:
-                setAnchorLocationX(1);
-                break;
-            case RIGHT:
-                setAnchorLocationX(getSceneWidth() - getWidth() - 1);
-                break;
-            default:
-                break;
+            case TOP -> setAnchorLocationY(1);
+            case BOTTOM -> setAnchorLocationY(getSceneHeight() - getHeight() - 1);
+            case LEFT -> setAnchorLocationX(1);
+            case RIGHT -> setAnchorLocationX(getSceneWidth() - getWidth() - 1);
+            default -> {
+            }
         }
     }
 
     /**
      * Prevent the player from crossing the barricade
-     * @param collider
+     * @param collider The object that is collided with
      */
     @Override
     public void onCollision(Collider collider) {

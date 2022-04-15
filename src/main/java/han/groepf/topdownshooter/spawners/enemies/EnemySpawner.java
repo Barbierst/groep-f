@@ -15,8 +15,8 @@ public class EnemySpawner extends EntitySpawner {
 
     /**
      * Creates an EnemySpawner that spawns a random enemy on an interval of 100ms
-     * @param sceneWidth
-     * @param sceneHeight
+     * @param sceneWidth The width of the current scene
+     * @param sceneHeight The height of the current scene
      */
     public EnemySpawner(double sceneWidth, double sceneHeight) {
         super(2000);
