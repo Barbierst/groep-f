@@ -38,6 +38,6 @@ public class MenuScene extends StaticScene {
         title.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
 
         addEntity(title);
-        addEntity(new StartButton(new Coordinate2D(getWidth() / 2, getHeight() * 0.6), "Start game", this.world, Color.GREEN, Color.GREENYELLOW));
+        addEntity(new StartButton(new Coordinate2D(getWidth() / 2, getHeight() * 0.6), this.world));
     }
 }
