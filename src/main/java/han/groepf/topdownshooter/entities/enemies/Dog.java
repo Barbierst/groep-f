@@ -4,7 +4,11 @@ import com.github.hanyaeger.api.Coordinate2D;
 
 public class Dog extends Enemy {
 
-    public Dog(String resource, Coordinate2D initialLocation) {
-        super(resource, initialLocation);
+    /**
+     * An enemy with mediocre speed
+     * @param initialPosition
+     */
+    public Dog(Coordinate2D initialPosition) {
+        super("sprites/dog.png", initialPosition, 2);
     }
 }

@@ -4,7 +4,11 @@ import com.github.hanyaeger.api.Coordinate2D;
 
 public class Car extends Enemy {
 
-    public Car(String resource, Coordinate2D initialLocation) {
-        super(resource, initialLocation);
+    /**
+     * An enemy with high speed
+     * @param initialPosition
+     */
+    public Car(Coordinate2D initialPosition) {
+        super("sprites/car.png", initialPosition, 3);
     }
 }

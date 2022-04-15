@@ -1,6 +1,7 @@
 package han.groepf.topdownshooter.entities.barricade;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.entities.Collider;
 import han.groepf.topdownshooter.entities.LivingEntity;
 
 public class Barricade extends LivingEntity {
@@ -22,5 +23,10 @@ public class Barricade extends LivingEntity {
      */
     public double getX() {
         return x;
+    }
+
+    @Override
+    public void onHit(Collider collider) {
+        // barricade specific on hit
     }
 }
