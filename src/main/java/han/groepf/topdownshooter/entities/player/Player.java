@@ -1,16 +1,19 @@
 package han.groepf.topdownshooter.entities.player;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.entities.Collided;
+import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.Newtonian;
 import com.github.hanyaeger.api.entities.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
+import han.groepf.topdownshooter.entities.barricade.Barricade;
 import javafx.scene.input.KeyCode;
 
 import java.util.Set;
 
-public class Player extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian {
+public class Player extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided {
 
     /**
      * This constructor abstracts away the resource selection and passes on the initial location to the super constructor
@@ -63,6 +66,18 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
                 break;
             default:
                 break;
+        }
+    }
+
+    /**
+     * Prevent the player from crossing the barricade
+     * @param collider
+     */
+    @Override
+    public void onCollision(Collider collider) {
+        if (collider instanceof Barricade) {
+            setSpeed(0);
+            setAnchorLocationX(((Barricade) collider).getX() - collider.getWidth());
         }
     }
 }
