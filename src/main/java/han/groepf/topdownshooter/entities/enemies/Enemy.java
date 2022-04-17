@@ -48,6 +48,9 @@ public abstract class Enemy extends LivingEntity {
     }
 
     public void applyDamage(int damage) {
-        System.out.println("Applying " + damage + " damage");
+        super.removeHealth(damage);
+        if(getHealth() <= 0 ){
+            remove();
+        }
     }
 }
