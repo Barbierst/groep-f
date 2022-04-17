@@ -27,7 +27,6 @@ public class EnemySpawner extends EntitySpawner {
     @Override
     protected void spawnEntities() {
         int  rand = new Random().nextInt(10);
-
         if (rand < 5) {
             spawn(new Zombie(new Coordinate2D(sceneWidth * 0.98, randomY())));
         } else if (rand < 8) {

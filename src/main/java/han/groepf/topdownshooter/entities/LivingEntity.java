@@ -5,6 +5,7 @@ import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import han.groepf.topdownshooter.entities.enemies.Enemy;
+import han.groepf.topdownshooter.projectiles.Projectile;
 
 public abstract class LivingEntity extends DynamicSpriteEntity implements Collided, Collider {
 
@@ -19,15 +20,28 @@ public abstract class LivingEntity extends DynamicSpriteEntity implements Collid
     @Override
     public void onCollision(Collider collider) {
         if (collider instanceof Enemy) {
-            health = health - ((Enemy) collider).getDamage();
+            int damage = ((Enemy) collider).getDamage();
+            removeHealth(damage);
         }
 
         this.onHit(collider);
 
-        if (health <= 0) {
+        if (isDead()) {
             onDeath();
             remove();
         }
+    }
+
+    protected void removeHealth(int amount){
+        health -= health;
+    }
+
+    protected int getHealth(){
+        return health;
+    }
+
+    protected boolean isDead(){
+        return health <= 0;
     }
 
     /**

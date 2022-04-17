@@ -5,10 +5,11 @@ import com.github.hanyaeger.api.YaegerGame;
 import han.groepf.topdownshooter.scenes.EndScene;
 import han.groepf.topdownshooter.scenes.GameScene;
 import han.groepf.topdownshooter.scenes.MenuScene;
+import han.groepf.topdownshooter.weapons.gun.Gun;
 
 public class World extends YaegerGame {
     public static void main(String[] args) {
-        launch(args);
+        launch("--noSplash");
     }
 
     @Override
@@ -20,7 +21,7 @@ public class World extends YaegerGame {
     @Override
     public void setupScenes() {
         addScene(0, new MenuScene(this));
-        addScene(1, new GameScene(this));
+        addScene(1, new GameScene(this, new Gun(200)));
         addScene(2, new EndScene(this));
     }
 }
