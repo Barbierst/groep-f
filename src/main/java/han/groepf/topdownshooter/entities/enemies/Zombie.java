@@ -4,6 +4,8 @@ import com.github.hanyaeger.api.Coordinate2D;
 
 public class Zombie extends Enemy {
 
+    private int score = 2;
+
     /**
      * An enemy with low speed
      * @param initialPosition The initial position for the Zombie

@@ -5,6 +5,8 @@ import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.Direction;
 import han.groepf.topdownshooter.entities.LivingEntity;
 import han.groepf.topdownshooter.entities.barricade.Barricade;
+import han.groepf.topdownshooter.game.state.GameState;
+import han.groepf.topdownshooter.scenes.GameScene;
 
 import java.util.Random;
 
@@ -36,7 +38,9 @@ public abstract class Enemy extends LivingEntity {
 
     @Override
     public void onDeath() {
-        // award points
+        GameState.incrementKilledEnemyCount();
+        GameState.incrementPlayerScore();
+        GameScene.UpdateUserInterface();
     }
 
     /**
@@ -50,6 +54,7 @@ public abstract class Enemy extends LivingEntity {
     public void applyDamage(int damage) {
         super.removeHealth(damage);
         if(getHealth() <= 0 ){
+            onDeath();
             remove();
         }
     }
