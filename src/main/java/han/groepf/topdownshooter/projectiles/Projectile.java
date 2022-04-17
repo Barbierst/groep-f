@@ -14,6 +14,10 @@ public abstract class Projectile extends DynamicSpriteEntity implements Collider
         super(resource, initialLocation, size);
     }
 
+    /**
+     * Function which executes upon colliding with another Collider
+     * @param collider Target it collided with
+     */
     @Override
     public void onCollision(Collider collider) {
         if(!(collider instanceof Enemy)){

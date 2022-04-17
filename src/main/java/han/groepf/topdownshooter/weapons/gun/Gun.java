@@ -10,6 +10,10 @@ public class Gun extends EntitySpawner implements IShootable {
         super(intervalInMs);
     }
 
+    /**
+     * Displays the projectile and moves it to the right fast.
+     * @param projectile
+     */
     @Override
     public void shoot(Projectile projectile) {
         projectile.setSpeed(25);

@@ -32,14 +32,26 @@ public abstract class LivingEntity extends DynamicSpriteEntity implements Collid
         }
     }
 
+    /**
+     * Removes health from the living entity
+     * @param amount Amount to remove
+     */
     protected void removeHealth(int amount){
         health -= health;
     }
 
+    /**
+     * Gets the entities' current health
+     * @return Amount of health
+     */
     protected int getHealth(){
         return health;
     }
 
+    /**
+     * Checks if the entity is dead
+     * @return True if below or equal to 0
+     */
     protected boolean isDead(){
         return health <= 0;
     }

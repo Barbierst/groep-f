@@ -8,8 +8,6 @@ import han.groepf.topdownshooter.entities.barricade.Barricade;
 import han.groepf.topdownshooter.game.state.GameState;
 import han.groepf.topdownshooter.scenes.GameScene;
 
-import java.util.Random;
-
 public abstract class Enemy extends LivingEntity {
 
     private final int damage;
@@ -36,6 +34,9 @@ public abstract class Enemy extends LivingEntity {
         }
     }
 
+    /**
+     * Called when the entity dies, increments the killed enemy count, playerscore and then updates the UI
+     */
     @Override
     public void onDeath() {
         GameState.incrementKilledEnemyCount();
