@@ -46,4 +46,8 @@ public abstract class Enemy extends LivingEntity {
     public int getDamage() {
         return damage;
     }
+
+    public void applyDamage(int damage) {
+        System.out.println("Applying " + damage + " damage");
+    }
 }
