@@ -7,6 +7,8 @@ import com.github.hanyaeger.api.scenes.DynamicScene;
 import han.groepf.topdownshooter.World;
 import han.groepf.topdownshooter.entities.barricade.Barricade;
 import han.groepf.topdownshooter.entities.player.Player;
+import han.groepf.topdownshooter.game.state.GameState;
+import han.groepf.topdownshooter.game.userinterface.UserInterfaceComponent;
 import han.groepf.topdownshooter.spawners.enemies.EnemySpawner;
 import han.groepf.topdownshooter.weapons.IShootable;
 
@@ -14,10 +16,13 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
 
     private final World world;
     private final EntitySpawner playerWeapon;
+    private static UserInterfaceComponent killedEnemyComponent;
+    private static UserInterfaceComponent scoreComponent;
 
     /**
      * The basic game scene in which a controllable player entity, a barricade have been added
-     * @param world Instance of the current game
+     *
+     * @param world        Instance of the current game
      * @param playerWeapon
      */
     public GameScene(World world, EntitySpawner playerWeapon) {
@@ -25,15 +30,24 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
         this.playerWeapon = playerWeapon;
     }
 
+    public static void UpdateUserInterface() {
+        killedEnemyComponent.updateText("Enemies killed: " + GameState.getKilledEnemyCount());
+        scoreComponent.updateText("Score: " + GameState.getPlayerScore());
+    }
+
     @Override
     public void setupScene() {
+        killedEnemyComponent = new UserInterfaceComponent(5, 10, "Enemies killed: 0");
+        scoreComponent = new UserInterfaceComponent(5, 20, "Score: 0");
 
+        addEntity(killedEnemyComponent.getEntity());
+        addEntity(scoreComponent.getEntity());
     }
 
     @Override
     public void setupEntities() {
-        Player player = new Player(new Coordinate2D(getWidth() * 0.1,getHeight() * 0.1));
-        player.setWeapon((IShootable)playerWeapon);
+        Player player = new Player(new Coordinate2D(getWidth() * 0.1, getHeight() * 0.1));
+        player.setWeapon((IShootable) playerWeapon);
 
         addEntity(player);
         addEntity(new Barricade(getWidth() * 0.15, this.world));
@@ -43,7 +57,7 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
     public void setupEntitySpawners() {
         addEntitySpawner(new EnemySpawner(getWidth(), getHeight()));
         addEntitySpawner(playerWeapon);
-        if(playerWeapon.isActive()){
+        if (playerWeapon.isActive()) {
             playerWeapon.pause();
         }
     }
