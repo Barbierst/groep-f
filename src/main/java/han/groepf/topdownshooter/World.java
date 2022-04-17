@@ -2,12 +2,16 @@ package han.groepf.topdownshooter;
 
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
+import han.groepf.topdownshooter.game.state.GameState;
 import han.groepf.topdownshooter.scenes.EndScene;
 import han.groepf.topdownshooter.scenes.GameScene;
 import han.groepf.topdownshooter.scenes.MenuScene;
 import han.groepf.topdownshooter.weapons.gun.Gun;
 
 public class World extends YaegerGame {
+
+    private static final GameState state = new GameState();
+
     public static void main(String[] args) {
         launch("--noSplash");
     }
@@ -23,5 +27,9 @@ public class World extends YaegerGame {
         addScene(0, new MenuScene(this));
         addScene(1, new GameScene(this, new Gun(200)));
         addScene(2, new EndScene(this));
+    }
+
+    public GameState getState(){
+        return state;
     }
 }

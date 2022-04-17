@@ -2,22 +2,22 @@ package han.groepf.topdownshooter.game.state;
 
 public class GameState {
 
-    private static int killedEnemyCount = 0;
-    private static int playerScore = 0;
+    private int killedEnemyCount = 0;
+    private int playerScore = 0;
 
-    public static void incrementKilledEnemyCount() {
+    public void incrementKilledEnemyCount() {
         killedEnemyCount++;
     }
 
-    public static void incrementPlayerScore() {
-        playerScore++;
+    public void incrementPlayerScore(int addedScore) {
+        playerScore += addedScore;
     }
 
-    public static int getKilledEnemyCount() {
+    public int getKilledEnemyCount() {
         return killedEnemyCount;
     }
 
-    public static int getPlayerScore() {
+    public int getPlayerScore() {
         return playerScore;
     }
 

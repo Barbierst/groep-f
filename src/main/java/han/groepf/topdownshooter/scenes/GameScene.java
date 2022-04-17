@@ -7,13 +7,13 @@ import com.github.hanyaeger.api.scenes.DynamicScene;
 import han.groepf.topdownshooter.World;
 import han.groepf.topdownshooter.entities.barricade.Barricade;
 import han.groepf.topdownshooter.entities.player.Player;
-import han.groepf.topdownshooter.game.state.GameState;
 import han.groepf.topdownshooter.game.userinterface.UserInterfaceComponent;
 import han.groepf.topdownshooter.spawners.enemies.EnemySpawner;
 import han.groepf.topdownshooter.weapons.IShootable;
 
 public class GameScene extends DynamicScene implements EntitySpawnerContainer {
 
+    private Player player;
     private final World world;
     private final EntitySpawner playerWeapon;
     private static UserInterfaceComponent killedEnemyComponent;
@@ -30,11 +30,6 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
         this.playerWeapon = playerWeapon;
     }
 
-    public static void UpdateUserInterface() {
-        killedEnemyComponent.updateText("Enemies killed: " + GameState.getKilledEnemyCount());
-        scoreComponent.updateText("Score: " + GameState.getPlayerScore());
-    }
-
     @Override
     public void setupScene() {
         killedEnemyComponent = new UserInterfaceComponent(5, 10, "Enemies killed: 0");
@@ -46,19 +41,35 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
 
     @Override
     public void setupEntities() {
-        Player player = new Player(new Coordinate2D(getWidth() * 0.1, getHeight() * 0.1));
+        player = new Player(new Coordinate2D(getWidth() * 0.1, getHeight() * 0.1));
         player.setWeapon((IShootable) playerWeapon);
-
         addEntity(player);
         addEntity(new Barricade(getWidth() * 0.15, this.world));
     }
 
     @Override
     public void setupEntitySpawners() {
-        addEntitySpawner(new EnemySpawner(getWidth(), getHeight()));
+        addEntitySpawner(new EnemySpawner(getWidth(), getHeight(), this));
         addEntitySpawner(playerWeapon);
         if (playerWeapon.isActive()) {
             playerWeapon.pause();
         }
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void updateUserInterface() {
+        killedEnemyComponent.updateText("Enemies killed: " + world.getState().getKilledEnemyCount());
+        scoreComponent.updateText("Score: " + world.getState().getPlayerScore());
+    }
+
+    public void incrementPlayerScore(int score) {
+        world.getState().incrementPlayerScore(score);
+    }
+
+    public void incrementKilledEnemies() {
+        world.getState().incrementKilledEnemyCount();
     }
 }

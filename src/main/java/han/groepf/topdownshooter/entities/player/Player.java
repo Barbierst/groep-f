@@ -6,6 +6,7 @@ import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import han.groepf.topdownshooter.entities.barricade.Barricade;
+import han.groepf.topdownshooter.game.state.GameState;
 import han.groepf.topdownshooter.projectiles.bullets.Bullet;
 import han.groepf.topdownshooter.projectiles.bullets.FireBullet;
 import han.groepf.topdownshooter.weapons.IShootable;
