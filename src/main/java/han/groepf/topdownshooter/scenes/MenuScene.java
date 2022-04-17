@@ -5,6 +5,8 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.StaticScene;
 import han.groepf.topdownshooter.World;
+import han.groepf.topdownshooter.entities.buttons.DifficultyButton;
+import han.groepf.topdownshooter.entities.buttons.SettingsButton;
 import han.groepf.topdownshooter.entities.buttons.StartButton;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -39,5 +41,6 @@ public class MenuScene extends StaticScene {
 
         addEntity(title);
         addEntity(new StartButton(new Coordinate2D(getWidth() / 2, getHeight() * 0.6), this.world));
+        addEntity(new SettingsButton(new Coordinate2D(getWidth() / 2, getHeight() * 0.65), this.world));
     }
 }
