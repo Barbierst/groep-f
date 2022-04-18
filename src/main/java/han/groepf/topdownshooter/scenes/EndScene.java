@@ -26,7 +26,7 @@ public class EndScene extends StaticScene {
     }
 
     /**
-     * Adds menu items to the scene
+     * Adds menu buttons to the scene
      */
     @Override
     public void setupEntities() {

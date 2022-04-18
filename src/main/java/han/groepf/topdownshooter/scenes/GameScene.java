@@ -7,32 +7,28 @@ import com.github.hanyaeger.api.scenes.DynamicScene;
 import han.groepf.topdownshooter.World;
 import han.groepf.topdownshooter.entities.barricade.Barricade;
 import han.groepf.topdownshooter.entities.player.Player;
-import han.groepf.topdownshooter.game.state.Level;
 import han.groepf.topdownshooter.game.userinterface.UserInterfaceComponent;
 import han.groepf.topdownshooter.spawners.enemies.EnemySpawner;
 import han.groepf.topdownshooter.spawners.powerups.PowerupSpawner;
 import han.groepf.topdownshooter.weapons.IShootable;
-import han.groepf.topdownshooter.weapons.gun.Gun;
 
 public class GameScene extends DynamicScene implements EntitySpawnerContainer {
 
     private Player player;
     private final World world;
-    private final Level level;
     private final EntitySpawner bulletSpawner;
     private static UserInterfaceComponent killedEnemyComponent;
     private static UserInterfaceComponent scoreComponent;
-    private static UserInterfaceComponent enemiesToKillComponent;
 
     /**
      * The basic game scene in which a controllable player entity, a barricade have been added
      *
-     * @param world Instance of the current game
+     * @param world        Instance of the current game
+     * @param bulletSpawner EntitySpawner used to spawn bullets for the player
      */
-    public GameScene(World world, Level level) {
-        this.bulletSpawner = new Gun(1);
+    public GameScene(World world, EntitySpawner bulletSpawner) {
         this.world = world;
-        this.level = level;
+        this.bulletSpawner = bulletSpawner;
     }
 
     /**
@@ -40,13 +36,11 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
      */
     @Override
     public void setupScene() {
-        killedEnemyComponent = new UserInterfaceComponent(getWidth() * 0.8, 10, "Enemies killed: " + level.getKilledEnemies());
-        scoreComponent = new UserInterfaceComponent(getWidth() * 0.8, 30, "Score: " + world.getState().getPlayerScore());
-        enemiesToKillComponent = new UserInterfaceComponent(getWidth() * 0.8, 50, "Enemies to kill: " + level.getEnemiesToKill());
+        killedEnemyComponent = new UserInterfaceComponent(5, 10, "Enemies killed: 0");
+        scoreComponent = new UserInterfaceComponent(5, 20, "Score: 0");
 
         addEntity(killedEnemyComponent.getEntity());
         addEntity(scoreComponent.getEntity());
-        addEntity(enemiesToKillComponent.getEntity());
     }
 
     /**
@@ -68,7 +62,7 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
         addEntitySpawner(new EnemySpawner(getWidth(), getHeight(), this));
         addEntitySpawner(bulletSpawner);
 
-        if (world.getSettings().isPowerUpsOn()) {
+        if(world.getSettings().isPowerUpsOn()){
             addEntitySpawner(new PowerupSpawner(10000, 2, getWidth() * 0.1, getHeight() * 0.9));
         }
 
@@ -87,19 +81,10 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
     }
 
     /**
-     * Checks whether the level has finished, if so it will go to the next level
-     */
-    public void checkLevelProgress(){
-        if(level.hasFinishedLevel()){
-            world.nextLevel(level.levelNumber);
-        }
-    }
-
-    /**
      * Updates the user interface text
      */
     public void updateUserInterface() {
-        killedEnemyComponent.updateText("Enemies killed: " + level.getKilledEnemies());
+        killedEnemyComponent.updateText("Enemies killed: " + world.getState().getKilledEnemyCount());
         scoreComponent.updateText("Score: " + world.getState().getPlayerScore());
     }
 
@@ -117,6 +102,5 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
      */
     public void incrementKilledEnemies() {
         world.getState().incrementKilledEnemyCount();
-        level.incrementKilledEnemyCount();
     }
 }
