@@ -5,8 +5,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.StaticScene;
 import han.groepf.topdownshooter.World;
-import han.groepf.topdownshooter.entities.buttons.SettingsButton;
-import han.groepf.topdownshooter.entities.buttons.StartButton;
+import han.groepf.topdownshooter.game.userinterface.buttons.SceneSwitchButton;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -43,7 +42,7 @@ public class MenuScene extends StaticScene {
         title.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
 
         addEntity(title);
-        addEntity(new StartButton(new Coordinate2D(getWidth() / 2, getHeight() * 0.6), this.world));
-        addEntity(new SettingsButton(new Coordinate2D(getWidth() / 2, getHeight() * 0.65), this.world));
+        addEntity(new SceneSwitchButton(new Coordinate2D(getWidth() / 2, getHeight() * 0.6), this.world,"Start game", 1));
+        addEntity(new SceneSwitchButton(new Coordinate2D(getWidth() / 2, getHeight() * 0.65), this.world, "Settings", 3));
     }
 }

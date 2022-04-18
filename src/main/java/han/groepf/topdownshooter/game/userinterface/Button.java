@@ -1,4 +1,4 @@
-package han.groepf.topdownshooter.entities.buttons;
+package han.groepf.topdownshooter.game.userinterface;
 
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
