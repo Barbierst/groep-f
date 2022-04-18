@@ -20,6 +20,9 @@ public class PowerupSpawner extends EntitySpawner {
         this.maxY = maxY;
     }
 
+    /**
+     * Spawns powerups in random places if the spawn limit hasn't been reached yet
+     */
     @Override
     protected void spawnEntities() {
         if (spawns >= maxSpawns) {

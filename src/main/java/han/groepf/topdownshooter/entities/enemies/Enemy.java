@@ -40,6 +40,10 @@ public abstract class Enemy extends LivingEntity {
         }
     }
 
+    /**
+     * Function which executes upon colliding with another Collider
+     * @param collider Target it collided with
+     */
     @Override
     public void onCollision(Collider collider) {
         if (collider instanceof Enemy) {

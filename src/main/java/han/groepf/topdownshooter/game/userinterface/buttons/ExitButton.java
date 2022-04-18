@@ -12,6 +12,12 @@ public class ExitButton extends Button {
         super(initialLocation, "Exit game", world, Color.BLACK, Color.DARKGRAY);
     }
 
+    /**
+     * When this button is clicked, the game exits
+     *
+     * @param mouseButton  The clicked mouse button
+     * @param coordinate2D /
+     */
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
         world.quit();

@@ -17,6 +17,10 @@ public abstract class LivingEntity extends DynamicSpriteEntity implements Collid
         this.health = health;
     }
 
+    /**
+     * Function which executes upon colliding with another Collider
+     * @param collider Target it collided with
+     */
     @Override
     public void onCollision(Collider collider) {
         if (collider instanceof Enemy) {

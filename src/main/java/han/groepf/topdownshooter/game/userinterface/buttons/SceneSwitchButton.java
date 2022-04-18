@@ -14,8 +14,9 @@ public class SceneSwitchButton extends Button {
     }
 
     /**
-     * When this button is clicked, the active scene is set to the GameScene (scene 1)
-     * @param mouseButton The pressed mousebutton
+     * When this button is clicked, the active scene is set to the targetScene
+     *
+     * @param mouseButton  The clicked mouse button
      * @param coordinate2D /
      */
     @Override
