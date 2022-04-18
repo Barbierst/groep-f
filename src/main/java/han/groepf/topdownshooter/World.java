@@ -4,6 +4,7 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
 import han.groepf.topdownshooter.game.settings.Settings;
 import han.groepf.topdownshooter.game.state.GameState;
+import han.groepf.topdownshooter.game.state.Level;
 import han.groepf.topdownshooter.scenes.EndScene;
 import han.groepf.topdownshooter.scenes.GameScene;
 import han.groepf.topdownshooter.scenes.MenuScene;
@@ -28,9 +29,13 @@ public class World extends YaegerGame {
     @Override
     public void setupScenes() {
         addScene(0, new MenuScene(this));
-        addScene(1, new GameScene(this, new Gun(200)));
         addScene(2, new EndScene(this));
         addScene(3, new SettingsScene(this));
+
+        for (int i = 0; i < 10; i++) {
+            Level level = new Level(i, settings.getDifficulty(), state);
+            addScene(10 + i, new GameScene(this, level));
+        }
     }
 
     public GameState getState(){
@@ -39,5 +44,9 @@ public class World extends YaegerGame {
 
     public Settings getSettings(){
         return settings;
+    }
+
+    public void nextLevel(int currentLevelNumber) {
+        setActiveScene(10 + ++currentLevelNumber);
     }
 }

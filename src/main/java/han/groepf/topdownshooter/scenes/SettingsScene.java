@@ -25,6 +25,9 @@ public class SettingsScene extends StaticScene {
 
     }
 
+    /**
+     * Adds menu items to the scene
+     */
     @Override
     public void setupEntities() {
         TextEntity title = new TextEntity(
