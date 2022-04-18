@@ -15,7 +15,6 @@ public class Level {
         this.levelNumber = levelNumber;
         this.gameState = gameState;
         enemiesToKill = ((levelNumber + 1) * 3) + (difficulty.getIndex() * 5);
-        System.out.println(enemiesToKill);
     }
 
     public boolean hasFinishedLevel() {
