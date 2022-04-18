@@ -2,6 +2,7 @@ package han.groepf.topdownshooter;
 
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
+import han.groepf.topdownshooter.game.settings.Settings;
 import han.groepf.topdownshooter.game.state.GameState;
 import han.groepf.topdownshooter.scenes.EndScene;
 import han.groepf.topdownshooter.scenes.GameScene;
@@ -11,7 +12,8 @@ import han.groepf.topdownshooter.weapons.gun.Gun;
 
 public class World extends YaegerGame {
 
-    private static final GameState state = new GameState();
+    private final GameState state = new GameState();
+    private final Settings settings = new Settings();
 
     public static void main(String[] args) {
         launch("--noSplash");
@@ -33,5 +35,9 @@ public class World extends YaegerGame {
 
     public GameState getState(){
         return state;
+    }
+
+    public Settings getSettings(){
+        return settings;
     }
 }

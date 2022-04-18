@@ -6,14 +6,20 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 
 public class PowerUpToggle extends Button {
-    private final String[] difficulties = new String[]{
-            "Off",
-            "On"
-    };
-    int index = 0;
+
+    private final World world;
 
     public PowerUpToggle(Coordinate2D initialLocation, World world) {
-        super(initialLocation, "Power ups: Off", world, Color.GREEN, Color.GREENYELLOW);
+        super(initialLocation, "Power ups: Off" , world, Color.GREEN, Color.GREENYELLOW);
+        this.world = world;
+
+        String text = "Power ups: ";
+        boolean powerUpToggleValue = this.world
+                .getSettings()
+                .isPowerUpsOn();
+
+        text += powerUpToggleValue ? "On" : "Off";
+        this.setText(text);
     }
 
     /**
@@ -25,8 +31,11 @@ public class PowerUpToggle extends Button {
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
         String text = "Power ups: ";
-        index += 1;
-        text += difficulties[index % 2];
+        boolean powerUpToggleValue = this.world
+                .getSettings()
+                .togglePowerUp();
+
+        text += powerUpToggleValue ? "On" : "Off";
         this.setText(text);
     }
 }
