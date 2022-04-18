@@ -7,6 +7,7 @@ import han.groepf.topdownshooter.World;
 import han.groepf.topdownshooter.entities.LivingEntity;
 import han.groepf.topdownshooter.entities.barricade.Barricade;
 import han.groepf.topdownshooter.game.state.GameState;
+import han.groepf.topdownshooter.projectiles.Projectile;
 import han.groepf.topdownshooter.scenes.GameScene;
 
 public abstract class Enemy extends LivingEntity {
@@ -39,6 +40,23 @@ public abstract class Enemy extends LivingEntity {
         }
     }
 
+    @Override
+    public void onCollision(Collider collider) {
+        if (collider instanceof Enemy) {
+            int damage = ((Enemy) collider).getDamage();
+            removeHealth(damage);
+        }
+        if(collider instanceof Projectile){
+            if (isDead()) {
+                onDeath();
+            }
+        }
+        onHit(collider);
+        if (isDead()) {
+            remove();
+        }
+    }
+
     /**
      * Called when the entity dies, increments the killed enemy count, playerscore and then updates the UI
      */
@@ -50,6 +68,7 @@ public abstract class Enemy extends LivingEntity {
         game.incrementPlayerScore(score);
         game.incrementKilledEnemies();
         game.updateUserInterface();
+        game.checkLevelProgress();
     }
 
     /**

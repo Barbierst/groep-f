@@ -25,7 +25,8 @@ public class DifficultyButton extends Button {
 
         String currentDifficulty = this.world
                 .getSettings()
-                .getDifficultyString();
+                .getDifficulty()
+                .getName();
         this.setText("Difficulty: " + currentDifficulty);
     }
 
@@ -44,7 +45,7 @@ public class DifficultyButton extends Button {
                 .findFirst()
                 .get();
 
-        if(newDifficullty == null){
+        if (newDifficullty == null) {
             return;
         }
 
