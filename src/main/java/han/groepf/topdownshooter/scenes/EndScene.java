@@ -24,6 +24,9 @@ public class EndScene extends StaticScene {
 
     }
 
+    /**
+     * Adds menu buttons to the scene
+     */
     @Override
     public void setupEntities() {
         addEntity(new MenuButton(new Coordinate2D(getWidth() / 2, getHeight() * 0.5), this.world));

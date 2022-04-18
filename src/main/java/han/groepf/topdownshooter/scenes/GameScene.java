@@ -30,6 +30,9 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
         this.playerWeapon = playerWeapon;
     }
 
+    /**
+     * Adds the user interface to the scene
+     */
     @Override
     public void setupScene() {
         killedEnemyComponent = new UserInterfaceComponent(5, 10, "Enemies killed: 0");
@@ -39,6 +42,9 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
         addEntity(scoreComponent.getEntity());
     }
 
+    /**
+     * Adds the player to the scene
+     */
     @Override
     public void setupEntities() {
         player = new Player(new Coordinate2D(getWidth() * 0.1, getHeight() * 0.1));
@@ -47,6 +53,9 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
         addEntity(new Barricade(getWidth() * 0.15, this.world));
     }
 
+    /**
+     * Adds enemy spawner and player gun to the scene
+     */
     @Override
     public void setupEntitySpawners() {
         addEntitySpawner(new EnemySpawner(getWidth(), getHeight(), this));
@@ -56,19 +65,35 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
         }
     }
 
+    /**
+     * Returns the player entity
+     *
+     * @return Player
+     */
     public Player getPlayer() {
         return player;
     }
 
+    /**
+     * Updates the user interface text
+     */
     public void updateUserInterface() {
         killedEnemyComponent.updateText("Enemies killed: " + world.getState().getKilledEnemyCount());
         scoreComponent.updateText("Score: " + world.getState().getPlayerScore());
     }
 
+    /**
+     * Increments the player's score by the amount given
+     *
+     * @param score Score to increment by
+     */
     public void incrementPlayerScore(int score) {
         world.getState().incrementPlayerScore(score);
     }
 
+    /**
+     * Increments the player's kill count
+     */
     public void incrementKilledEnemies() {
         world.getState().incrementKilledEnemyCount();
     }

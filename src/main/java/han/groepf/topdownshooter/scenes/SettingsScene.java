@@ -8,7 +8,6 @@ import han.groepf.topdownshooter.World;
 import han.groepf.topdownshooter.entities.buttons.DifficultyButton;
 import han.groepf.topdownshooter.entities.buttons.MenuButton;
 import han.groepf.topdownshooter.entities.buttons.PowerUpToggle;
-import han.groepf.topdownshooter.entities.buttons.StartButton;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
