@@ -47,6 +47,10 @@ public class World extends YaegerGame {
     }
 
     public void nextLevel(int currentLevelNumber) {
+        if(currentLevelNumber == 9){
+            setActiveScene(2);
+        }
+
         setActiveScene(10 + ++currentLevelNumber);
     }
 }
