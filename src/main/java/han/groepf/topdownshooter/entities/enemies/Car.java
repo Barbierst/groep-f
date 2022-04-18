@@ -7,8 +7,10 @@ public class Car extends Enemy {
     /**
      * An enemy with high speed
      * @param initialPosition The initial position for the Car
+     * @param additionalHealth
+     * @param additionalSpeed
      */
-    public Car(Coordinate2D initialPosition) {
-        super("sprites/car.png", initialPosition, 3, 2, 2);
+    public Car(Coordinate2D initialPosition, int additionalHealth, double additionalSpeed) {
+        super("sprites/car.png", initialPosition, 3+ additionalSpeed, 2, 2 + additionalHealth);
     }
 }

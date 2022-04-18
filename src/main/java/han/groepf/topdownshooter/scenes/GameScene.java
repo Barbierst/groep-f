@@ -65,7 +65,7 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
      */
     @Override
     public void setupEntitySpawners() {
-        addEntitySpawner(new EnemySpawner(getWidth(), getHeight(), this));
+        addEntitySpawner(level.getEnemySpawner(getWidth(), getHeight(), this));
         addEntitySpawner(bulletSpawner);
 
         if (world.getSettings().isPowerUpsOn()) {
