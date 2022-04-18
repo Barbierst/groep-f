@@ -12,7 +12,7 @@ public class Gun extends EntitySpawner implements IShootable {
 
     /**
      * Displays the projectile and moves it to the right fast.
-     * @param projectile
+     * @param projectile Projectile to fire
      */
     @Override
     public void shoot(Projectile projectile) {

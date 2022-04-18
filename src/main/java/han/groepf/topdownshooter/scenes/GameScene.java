@@ -16,7 +16,7 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
 
     private Player player;
     private final World world;
-    private final EntitySpawner playerWeapon;
+    private final EntitySpawner bulletSpawner;
     private static UserInterfaceComponent killedEnemyComponent;
     private static UserInterfaceComponent scoreComponent;
 
@@ -24,11 +24,11 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
      * The basic game scene in which a controllable player entity, a barricade have been added
      *
      * @param world        Instance of the current game
-     * @param playerWeapon
+     * @param bulletSpawner EntitySpawner used to spawn bullets for the player
      */
-    public GameScene(World world, EntitySpawner playerWeapon) {
+    public GameScene(World world, EntitySpawner bulletSpawner) {
         this.world = world;
-        this.playerWeapon = playerWeapon;
+        this.bulletSpawner = bulletSpawner;
     }
 
     /**
@@ -49,7 +49,7 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
     @Override
     public void setupEntities() {
         player = new Player(new Coordinate2D(getWidth() * 0.1, getHeight() * 0.1));
-        player.setWeapon((IShootable) playerWeapon);
+        player.setWeapon((IShootable) bulletSpawner);
         addEntity(player);
         addEntity(new Barricade(getWidth() * 0.15, this.world));
     }
@@ -60,14 +60,14 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
     @Override
     public void setupEntitySpawners() {
         addEntitySpawner(new EnemySpawner(getWidth(), getHeight(), this));
-        addEntitySpawner(playerWeapon);
+        addEntitySpawner(bulletSpawner);
 
         if(world.getSettings().isPowerUpsOn()){
             addEntitySpawner(new PowerupSpawner(10000, 2, getWidth() * 0.1, getHeight() * 0.9));
         }
 
-        if (playerWeapon.isActive()) {
-            playerWeapon.pause();
+        if (bulletSpawner.isActive()) {
+            bulletSpawner.pause();
         }
     }
 

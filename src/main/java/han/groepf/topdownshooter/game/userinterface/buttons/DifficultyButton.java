@@ -44,6 +44,10 @@ public class DifficultyButton extends Button {
                 .findFirst()
                 .get();
 
+        if(newDifficullty == null){
+            return;
+        }
+
         this.setText("Difficulty: " + newDifficullty.getName());
         world
                 .getSettings()
