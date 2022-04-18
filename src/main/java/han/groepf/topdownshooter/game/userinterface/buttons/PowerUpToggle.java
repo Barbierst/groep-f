@@ -1,7 +1,8 @@
-package han.groepf.topdownshooter.entities.buttons;
+package han.groepf.topdownshooter.game.userinterface.buttons;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import han.groepf.topdownshooter.World;
+import han.groepf.topdownshooter.game.userinterface.Button;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 
