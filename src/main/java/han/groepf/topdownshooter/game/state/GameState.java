@@ -14,7 +14,6 @@ public class GameState {
 
     /**
      * Increments the player's score by the amount given
-     *
      * @param addedScore Score to add
      */
     public void incrementPlayerScore(int addedScore) {
@@ -23,7 +22,6 @@ public class GameState {
 
     /**
      * Returns the amount of enemies killed
-     *
      * @return Amount of enemies killed
      */
     public int getKilledEnemyCount() {
@@ -32,15 +30,10 @@ public class GameState {
 
     /**
      * Returns the player's score
-     *
      * @return Score
      */
     public int getPlayerScore() {
         return playerScore;
     }
 
-    public void resetState() {
-        killedEnemyCount = 0;
-        playerScore = 0;
-    }
 }

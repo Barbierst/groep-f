@@ -38,7 +38,7 @@ public class Settings {
      * Returns the name of the difficulty setting
      * @return Easy, Normal or Hard
      */
-    public Difficulty getDifficulty(){
-        return difficulty;
+    public String getDifficultyString(){
+        return difficulty.getName();
     }
 }
