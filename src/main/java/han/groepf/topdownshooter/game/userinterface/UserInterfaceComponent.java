@@ -17,7 +17,7 @@ public class UserInterfaceComponent {
         );
         textEntity.setAnchorPoint(AnchorPoint.TOP_LEFT);
         textEntity.setFill(Color.DARKBLUE);
-        textEntity.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 12));
+        textEntity.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 16));
     }
 
     /**
