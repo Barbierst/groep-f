@@ -24,7 +24,7 @@ public class PowerUpToggle extends Button {
     }
 
     /**
-     * When this button is clicked, the active scene is set to the GameScene (scene 1)
+     * When this button is clicked, powerups are toggled on or off
      *
      * @param mouseButton  The clicked mouse button
      * @param coordinate2D /

@@ -9,7 +9,6 @@ import han.groepf.topdownshooter.scenes.EndScene;
 import han.groepf.topdownshooter.scenes.GameScene;
 import han.groepf.topdownshooter.scenes.MenuScene;
 import han.groepf.topdownshooter.scenes.SettingsScene;
-import han.groepf.topdownshooter.weapons.gun.Gun;
 
 public class World extends YaegerGame {
 
@@ -38,16 +37,21 @@ public class World extends YaegerGame {
         }
     }
 
-    public GameState getState(){
+    public GameState getState() {
         return state;
     }
 
-    public Settings getSettings(){
+    public Settings getSettings() {
         return settings;
     }
 
+    /**
+     * Advances the game scene to the next level
+     *
+     * @param currentLevelNumber Current level we're at
+     */
     public void nextLevel(int currentLevelNumber) {
-        if(currentLevelNumber == 9){
+        if (currentLevelNumber == 9) {
             setActiveScene(2);
         }
 

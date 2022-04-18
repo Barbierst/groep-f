@@ -39,6 +39,9 @@ public class GameState {
         return playerScore;
     }
 
+    /**
+     * Resets the player's score and enemy killcount
+     */
     public void resetState() {
         killedEnemyCount = 0;
         playerScore = 0;

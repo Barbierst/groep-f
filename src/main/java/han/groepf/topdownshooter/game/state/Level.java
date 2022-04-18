@@ -17,19 +17,34 @@ public class Level {
         enemiesToKill = ((levelNumber + 1) * 3) + (difficulty.getIndex() * 5);
     }
 
+    /**
+     * Checks whether the player has killed enough enemies
+     * @return
+     */
     public boolean hasFinishedLevel() {
         boolean res =  killedEnemies >= enemiesToKill;
         return res;
     }
 
+    /**
+     * Returns the amount of enemies to kill
+     * @return Enemies to kill
+     */
     public int getEnemiesToKill() {
         return enemiesToKill;
     }
 
+    /**
+     * Increments the killed enemy count
+     */
     public void incrementKilledEnemyCount() {
         killedEnemies += 1;
     }
 
+    /**
+     * Returns the amount of killed enemies
+     * @return Amount of killed enemies
+     */
     public int getKilledEnemies() {
         return killedEnemies;
     }

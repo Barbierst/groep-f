@@ -14,6 +14,12 @@ public class StartGameButton extends SceneSwitchButton{
         this.state = state;
     }
 
+    /**
+     * When this button is clicked, the game's state is reset and the game is started
+     *
+     * @param mouseButton  The clicked mouse button
+     * @param coordinate2D /
+     */
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
         super.onMouseButtonPressed(mouseButton, coordinate2D);
