@@ -61,7 +61,10 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
     public void setupEntitySpawners() {
         addEntitySpawner(new EnemySpawner(getWidth(), getHeight(), this));
         addEntitySpawner(playerWeapon);
-        addEntitySpawner(new PowerupSpawner(10000, 2, getWidth() * 0.1, getHeight() * 0.9));
+
+        if(world.getSettings().isPowerUpsOn()){
+            addEntitySpawner(new PowerupSpawner(10000, 2, getWidth() * 0.1, getHeight() * 0.9));
+        }
 
         if (playerWeapon.isActive()) {
             playerWeapon.pause();
