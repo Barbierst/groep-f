@@ -6,8 +6,8 @@ import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import han.groepf.topdownshooter.entities.barricade.Barricade;
-import han.groepf.topdownshooter.game.state.GameState;
-import han.groepf.topdownshooter.projectiles.bullets.Bullet;
+import han.groepf.topdownshooter.entities.powerups.IActivateAble;
+import han.groepf.topdownshooter.entities.powerups.Powerup;
 import han.groepf.topdownshooter.projectiles.bullets.FireBullet;
 import han.groepf.topdownshooter.weapons.IShootable;
 import javafx.scene.input.KeyCode;
@@ -17,6 +17,7 @@ import java.util.Set;
 public class Player extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided {
 
     private IShootable shootable;
+    private IActivateAble powerUp;
 
     /**
      * This constructor abstracts away the resource selection and passes on the initial location to the super constructor
@@ -48,6 +49,11 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
             setMotion(3, Direction.DOWN);
         } else if (pressedKeys.contains(KeyCode.SPACE)) {
             shootable.shoot(new FireBullet(new Coordinate2D(this.getLocationInScene())));
+        }else if(pressedKeys.contains(KeyCode.X)){
+            if(powerUp != null){
+                powerUp.activate();
+                powerUp = null;
+            }
         }
     }
 
@@ -80,10 +86,15 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
             setSpeed(0);
             setAnchorLocationX(((Barricade) collider).getX() - collider.getWidth());
         }
+        if (collider instanceof Powerup) {
+            ((Powerup) collider).notifyRemove();
+            powerUp = (IActivateAble) collider;
+        }
     }
 
     /**
      * Set the player's currently weapon and projectile
+     *
      * @param weapon Weapon to fire
      */
     public void setWeapon(IShootable weapon) {

@@ -9,6 +9,7 @@ import han.groepf.topdownshooter.entities.barricade.Barricade;
 import han.groepf.topdownshooter.entities.player.Player;
 import han.groepf.topdownshooter.game.userinterface.UserInterfaceComponent;
 import han.groepf.topdownshooter.spawners.enemies.EnemySpawner;
+import han.groepf.topdownshooter.spawners.powerups.PowerupSpawner;
 import han.groepf.topdownshooter.weapons.IShootable;
 
 public class GameScene extends DynamicScene implements EntitySpawnerContainer {
@@ -60,6 +61,8 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
     public void setupEntitySpawners() {
         addEntitySpawner(new EnemySpawner(getWidth(), getHeight(), this));
         addEntitySpawner(playerWeapon);
+        addEntitySpawner(new PowerupSpawner(10000, 2, getWidth() * 0.1, getHeight() * 0.9));
+
         if (playerWeapon.isActive()) {
             playerWeapon.pause();
         }
