@@ -26,10 +26,18 @@ public class Settings {
         return difficulty;
     }
 
+    /**
+     * Returns the state of the powerup setting
+     * @return True if on false if off
+     */
     public boolean isPowerUpsOn(){
         return powerUpsOn;
     }
 
+    /**
+     * Returns the name of the difficulty setting
+     * @return Easy, Normal or Hard
+     */
     public String getDifficultyString(){
         return difficulty.getName();
     }
