@@ -41,7 +41,7 @@ public abstract class LivingEntity extends DynamicSpriteEntity implements Collid
      * @param amount Amount to remove
      */
     protected void removeHealth(int amount){
-        health -= health;
+        health -= amount;
     }
 
     /**
