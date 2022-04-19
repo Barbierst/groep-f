@@ -2,10 +2,14 @@ package han.groepf.topdownshooter.entities.enemies;
 
 import com.github.hanyaeger.api.Coordinate2D;
 
+/**
+ * Represents a dog enemy
+ */
 public class Dog extends Enemy {
 
-     /**
+    /**
      * An enemy with mediocre speed
+     *
      * @param initialPosition The start position for the dog
      */
     public Dog(Coordinate2D initialPosition) {

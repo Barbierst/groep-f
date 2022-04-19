@@ -12,12 +12,15 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+/**
+ * Represents the settings screen
+ */
 public class SettingsScene extends StaticScene {
 
     private final World world;
 
-    public SettingsScene(World world){
-       this.world = world;
+    public SettingsScene(World world) {
+        this.world = world;
     }
 
     @Override

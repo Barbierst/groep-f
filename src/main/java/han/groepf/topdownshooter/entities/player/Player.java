@@ -14,6 +14,9 @@ import javafx.scene.input.KeyCode;
 
 import java.util.Set;
 
+/**
+ * Represents the player
+ */
 public class Player extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided {
 
     private IShootable shootable;
@@ -49,8 +52,8 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
             setMotion(3, Direction.DOWN);
         } else if (pressedKeys.contains(KeyCode.SPACE)) {
             shootable.shoot(new FireBullet(new Coordinate2D(this.getLocationInScene())));
-        }else if(pressedKeys.contains(KeyCode.X)){
-            if(powerUp != null){
+        } else if (pressedKeys.contains(KeyCode.X)) {
+            if (powerUp != null) {
                 powerUp.activate();
                 powerUp = null;
             }

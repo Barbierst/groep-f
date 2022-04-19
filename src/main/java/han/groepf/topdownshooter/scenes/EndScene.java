@@ -9,6 +9,9 @@ import han.groepf.topdownshooter.game.userinterface.buttons.SceneSwitchButton;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+/**
+ * Represents the end menu
+ */
 public class EndScene extends StaticScene {
 
     private final World world;

@@ -11,6 +11,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+/**
+ * Represents the menu screen
+ */
 public class MenuScene extends StaticScene {
 
     private final World world;
@@ -43,7 +46,7 @@ public class MenuScene extends StaticScene {
         title.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
 
         addEntity(title);
-        addEntity(new StartGameButton(new Coordinate2D(getWidth() / 2, getHeight() * 0.6), world,"Start game", 10, world.getState()));
+        addEntity(new StartGameButton(new Coordinate2D(getWidth() / 2, getHeight() * 0.6), world, "Start game", 10, world.getState()));
         addEntity(new SceneSwitchButton(new Coordinate2D(getWidth() / 2, getHeight() * 0.65), world, "Settings", 3));
     }
 }

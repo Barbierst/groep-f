@@ -4,6 +4,9 @@ import com.github.hanyaeger.api.entities.EntitySpawner;
 import han.groepf.topdownshooter.projectiles.Projectile;
 import han.groepf.topdownshooter.weapons.IShootable;
 
+/**
+ * Used to shoot
+ */
 public class Gun extends EntitySpawner implements IShootable {
 
     public Gun(long intervalInMs) {
@@ -12,6 +15,7 @@ public class Gun extends EntitySpawner implements IShootable {
 
     /**
      * Displays the projectile and moves it to the right fast.
+     *
      * @param projectile Projectile to fire
      */
     @Override

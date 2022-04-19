@@ -6,12 +6,15 @@ import han.groepf.topdownshooter.game.userinterface.Button;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 
+/**
+ * Represents a toggle button on screen
+ */
 public class PowerUpToggle extends Button {
 
     private final World world;
 
     public PowerUpToggle(Coordinate2D initialLocation, World world) {
-        super(initialLocation, "Power ups: Off" , world, Color.GREEN, Color.GREENYELLOW);
+        super(initialLocation, "Power ups: Off", world, Color.GREEN, Color.GREENYELLOW);
         this.world = world;
 
         String text = "Power ups: ";

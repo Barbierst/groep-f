@@ -10,6 +10,9 @@ import han.groepf.topdownshooter.scenes.GameScene;
 
 import java.util.Random;
 
+/**
+ * Spawns enemies
+ */
 public class EnemySpawner extends EntitySpawner {
 
     private final double sceneWidth;
@@ -44,6 +47,10 @@ public class EnemySpawner extends EntitySpawner {
         spawn(e);
     }
 
+    /**
+     * Generates a random Y coordinate
+     * @return
+     */
     private double randomY() {
         return new Random().nextInt((int) sceneHeight);
     }

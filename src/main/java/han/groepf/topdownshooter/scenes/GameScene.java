@@ -14,6 +14,9 @@ import han.groepf.topdownshooter.spawners.powerups.PowerupSpawner;
 import han.groepf.topdownshooter.weapons.IShootable;
 import han.groepf.topdownshooter.weapons.gun.Gun;
 
+/**
+ * Represents the game screen
+ */
 public class GameScene extends DynamicScene implements EntitySpawnerContainer {
 
     private Player player;
@@ -89,8 +92,8 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
     /**
      * Checks whether the level has finished, if so it will go to the next level
      */
-    public void checkLevelProgress(){
-        if(level.hasFinishedLevel()){
+    public void checkLevelProgress() {
+        if (level.hasFinishedLevel()) {
             world.nextLevel(level.levelNumber);
         }
     }

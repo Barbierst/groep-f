@@ -7,10 +7,19 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+/**
+ * Represents an UI component
+ */
 public class UserInterfaceComponent {
     private final TextEntity textEntity;
 
-    public UserInterfaceComponent(double x, double y, String startText){
+    /**
+     * Contains functions to display and update text for the player
+     * @param x X location of the text
+     * @param y Y location of the text
+     * @param startText Text to display if the UI hasn't been updated yet
+     */
+    public UserInterfaceComponent(double x, double y, String startText) {
         textEntity = new TextEntity(
                 new Coordinate2D(x, y),
                 startText
@@ -22,17 +31,19 @@ public class UserInterfaceComponent {
 
     /**
      * Updates the displayed text
+     *
      * @param newText New text to display
      */
-    public void updateText(String newText){
+    public void updateText(String newText) {
         textEntity.setText(newText);
     }
 
     /**
      * Returns the TextEntity used by this component
+     *
      * @return TextEntity displayed on the screen
      */
-    public TextEntity getEntity(){
+    public TextEntity getEntity() {
         return textEntity;
     }
 }

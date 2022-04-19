@@ -13,6 +13,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+/**
+ * Derive this class in order to create a button on the screen
+ */
 public abstract class Button extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener {
 
     private final Color hoverColor;
@@ -22,11 +25,12 @@ public abstract class Button extends TextEntity implements MouseButtonPressedLis
     /**
      * Abstract class to handle the default behaviour of a button. This class should be extended upon and the action should be implemented in the sub class
      * Default behaviour includes color changing, and setting the cursor to a hand.
+     *
      * @param initialLocation The location for the button
-     * @param text The text that is displayed on the button
-     * @param world Instance of the current game
-     * @param color The main color for the button
-     * @param hoverColor The color for the on hover effect
+     * @param text            The text that is displayed on the button
+     * @param world           Instance of the current game
+     * @param color           The main color for the button
+     * @param hoverColor      The color for the on hover effect
      */
     public Button(Coordinate2D initialLocation, String text, World world, Color color, Color hoverColor) {
         super(initialLocation, text);

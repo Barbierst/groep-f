@@ -2,9 +2,13 @@ package han.groepf.topdownshooter.entities.enemies;
 
 import com.github.hanyaeger.api.Coordinate2D;
 
+/**
+ * Represents a zombie enemy
+ */
 public class Zombie extends Enemy {
     /**
      * An enemy with low speed
+     *
      * @param initialPosition The initial position for the Zombie
      */
     public Zombie(Coordinate2D initialPosition) {

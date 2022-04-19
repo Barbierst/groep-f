@@ -20,6 +20,11 @@ public class DifficultyButton extends Button {
     };
     private int index = 0;
 
+    /**
+     * Button used to switch between difficulty settings, changes text each time it's pressed
+     * @param initialLocation Location of the button
+     * @param world World the difficulty settings is in
+     */
     public DifficultyButton(Coordinate2D initialLocation, World world) {
         super(initialLocation, "Difficulty: easy", world, Color.GREEN, Color.GREENYELLOW);
 

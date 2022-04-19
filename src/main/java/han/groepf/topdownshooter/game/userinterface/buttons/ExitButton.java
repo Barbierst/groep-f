@@ -6,6 +6,9 @@ import han.groepf.topdownshooter.game.userinterface.Button;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 
+/**
+ * Represents the exit button on screen
+ */
 public class ExitButton extends Button {
 
     public ExitButton(Coordinate2D initialLocation, World world) {

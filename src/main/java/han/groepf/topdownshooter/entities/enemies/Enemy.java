@@ -3,13 +3,14 @@ package han.groepf.topdownshooter.entities.enemies;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.Direction;
-import han.groepf.topdownshooter.World;
 import han.groepf.topdownshooter.entities.LivingEntity;
 import han.groepf.topdownshooter.entities.barricade.Barricade;
-import han.groepf.topdownshooter.game.state.GameState;
 import han.groepf.topdownshooter.projectiles.Projectile;
 import han.groepf.topdownshooter.scenes.GameScene;
 
+/**
+ * Base enemy class
+ */
 public abstract class Enemy extends LivingEntity {
 
     private final int damage;
@@ -21,6 +22,8 @@ public abstract class Enemy extends LivingEntity {
      * @param resource        The resource file that is used for the SpriteEntity
      * @param initialPosition The initial position of the Enemy
      * @param speed           The speed with which the enemy moves in the LEFT direction
+     * @param damage          Amount of damage the enemy does to the barricade
+     * @param health          Amount of health the enemy has
      */
     protected Enemy(String resource, Coordinate2D initialPosition, double speed, int damage, int health) {
         super(resource, initialPosition, health);
@@ -42,6 +45,7 @@ public abstract class Enemy extends LivingEntity {
 
     /**
      * Function which executes upon colliding with another Collider
+     *
      * @param collider Target it collided with
      */
     @Override
@@ -50,7 +54,7 @@ public abstract class Enemy extends LivingEntity {
             int damage = ((Enemy) collider).getDamage();
             removeHealth(damage);
         }
-        if(collider instanceof Projectile){
+        if (collider instanceof Projectile) {
             if (isDead()) {
                 onDeath();
             }
@@ -84,6 +88,11 @@ public abstract class Enemy extends LivingEntity {
         return damage;
     }
 
+    /**
+     * Apply damage to the enemy
+     * Will die if health reaches 0
+     * @param damage damage to apply
+     */
     public void applyDamage(int damage) {
         super.removeHealth(damage);
         if (getHealth() <= 0) {
@@ -92,6 +101,10 @@ public abstract class Enemy extends LivingEntity {
         }
     }
 
+    /**
+     * Sets the game scene the enemy belongs to
+     * @param game Game scene
+     */
     public void setGameScene(GameScene game) {
         this.game = game;
     }

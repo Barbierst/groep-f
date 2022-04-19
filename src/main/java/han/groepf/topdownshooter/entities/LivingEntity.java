@@ -5,12 +5,20 @@ import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import han.groepf.topdownshooter.entities.enemies.Enemy;
-import han.groepf.topdownshooter.projectiles.Projectile;
 
+/**
+ * Used to create entities other than the player
+ */
 public abstract class LivingEntity extends DynamicSpriteEntity implements Collided, Collider {
 
     private int health;
 
+    /**
+     * Class used to derive from. Used to create entities other than the player
+     * @param resource entity sprite
+     * @param initialLocation location on the screen
+     * @param health entity health
+     */
     protected LivingEntity(String resource, Coordinate2D initialLocation, int health) {
         super(resource, initialLocation);
 
@@ -19,6 +27,7 @@ public abstract class LivingEntity extends DynamicSpriteEntity implements Collid
 
     /**
      * Function which executes upon colliding with another Collider
+     *
      * @param collider Target it collided with
      */
     @Override
@@ -38,30 +47,34 @@ public abstract class LivingEntity extends DynamicSpriteEntity implements Collid
 
     /**
      * Removes health from the living entity
+     *
      * @param amount Amount to remove
      */
-    protected void removeHealth(int amount){
+    protected void removeHealth(int amount) {
         health -= amount;
     }
 
     /**
      * Gets the entities' current health
+     *
      * @return Amount of health
      */
-    protected int getHealth(){
+    protected int getHealth() {
         return health;
     }
 
     /**
      * Checks if the entity is dead
+     *
      * @return True if below or equal to 0
      */
-    protected boolean isDead(){
+    protected boolean isDead() {
         return health <= 0;
     }
 
     /**
      * Abstract function that is called on a collision this is to be implemented by the subclass.
+     *
      * @param collider The object that is collided with
      */
     public abstract void onHit(Collider collider);

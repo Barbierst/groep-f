@@ -6,6 +6,9 @@ import han.groepf.topdownshooter.entities.powerups.Powerup;
 
 import java.util.Random;
 
+/**
+ * Spawns powerups
+ */
 public class PowerupSpawner extends EntitySpawner {
 
     private final int maxSpawns;
@@ -13,6 +16,13 @@ public class PowerupSpawner extends EntitySpawner {
     private final double maxX;
     private final double maxY;
 
+    /**
+     * Creates an PowerupSpawner that spawns a random powerup
+     * @param intervalInMs Seconds to wait between powerup spawn tries
+     * @param maxSpawns Max amount of powerups to spawn per level
+     * @param maxX Max X location the powerup can spawn
+     * @param maxY Max Y location the powerup can spawn
+     */
     public PowerupSpawner(long intervalInMs, int maxSpawns, double maxX, double maxY) {
         super(intervalInMs);
         this.maxSpawns = maxSpawns;

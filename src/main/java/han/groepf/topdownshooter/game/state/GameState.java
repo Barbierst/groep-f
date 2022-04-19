@@ -1,5 +1,8 @@
 package han.groepf.topdownshooter.game.state;
 
+/**
+ * Contains functions to retrieve and store game state
+ */
 public class GameState {
 
     private int killedEnemyCount = 0;

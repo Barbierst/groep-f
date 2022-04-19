@@ -10,6 +10,9 @@ import han.groepf.topdownshooter.scenes.GameScene;
 import han.groepf.topdownshooter.scenes.MenuScene;
 import han.groepf.topdownshooter.scenes.SettingsScene;
 
+/**
+ * Represents the game engine
+ */
 public class World extends YaegerGame {
 
     private final GameState state = new GameState();
@@ -37,10 +40,18 @@ public class World extends YaegerGame {
         }
     }
 
+    /**
+     * Returns the game's state
+     * @return gamestate
+     */
     public GameState getState() {
         return state;
     }
 
+    /**
+     * Returns the game's settings
+     * @return
+     */
     public Settings getSettings() {
         return settings;
     }
