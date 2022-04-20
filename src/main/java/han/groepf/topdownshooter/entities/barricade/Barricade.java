@@ -4,6 +4,7 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.Collider;
 import han.groepf.topdownshooter.World;
 import han.groepf.topdownshooter.entities.LivingEntity;
+import han.groepf.topdownshooter.scenes.GameScene;
 
 /**
  * Represents a barricade for player protection
@@ -12,17 +13,19 @@ public class Barricade extends LivingEntity {
 
     private final double x;
     private final World world;
+    private final GameScene game;
 
     /**
-     * This constructor abstracts away the resource selection and coordinate creation based on a X-coordinate and passes this on to the super constructor
+     * This constructor abstracts away the resource selection and coordinate creation based on an X-coordinate and passes this on to the super constructor
      *
      * @param x     The horizontal position for the barricade
      * @param world world to spawn the barricade in
      */
-    public Barricade(double x, World world) {
+    public Barricade(double x, World world, GameScene game) {
         super("sprites/barricade.png", new Coordinate2D(x, 0), 5);
         this.x = x;
         this.world = world;
+        this.game = game;
     }
 
     /**
@@ -41,7 +44,7 @@ public class Barricade extends LivingEntity {
      */
     @Override
     public void onHit(Collider collider) {
-        // barricade specific on hit
+        game.updateUserInterface();
     }
 
     /**

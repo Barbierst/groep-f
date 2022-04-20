@@ -59,7 +59,7 @@ public abstract class LivingEntity extends DynamicSpriteEntity implements Collid
      *
      * @return Amount of health
      */
-    protected int getHealth() {
+    public int getHealth() {
         return health;
     }
 
