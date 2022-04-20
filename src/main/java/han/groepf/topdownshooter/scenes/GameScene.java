@@ -23,9 +23,11 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
     private final World world;
     private final Level level;
     private final EntitySpawner bulletSpawner;
+    private Barricade barricade;
     private static UserInterfaceComponent killedEnemyComponent;
     private static UserInterfaceComponent scoreComponent;
     private static UserInterfaceComponent enemiesToKillComponent;
+    private static UserInterfaceComponent barricadeHealth;
 
     /**
      * The basic game scene in which a controllable player entity, a barricade have been added
@@ -43,13 +45,7 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
      */
     @Override
     public void setupScene() {
-        killedEnemyComponent = new UserInterfaceComponent(getWidth() * 0.8, 10, "Enemies killed: " + level.getKilledEnemies());
-        scoreComponent = new UserInterfaceComponent(getWidth() * 0.8, 30, "Score: " + world.getState().getPlayerScore());
-        enemiesToKillComponent = new UserInterfaceComponent(getWidth() * 0.8, 50, "Enemies to kill: " + level.getEnemiesToKill());
 
-        addEntity(killedEnemyComponent.getEntity());
-        addEntity(scoreComponent.getEntity());
-        addEntity(enemiesToKillComponent.getEntity());
     }
 
     /**
@@ -57,10 +53,23 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
      */
     @Override
     public void setupEntities() {
-        player = new Player(new Coordinate2D(getWidth() * 0.1, getHeight() * 0.1));
+        double width = getWidth();
+
+        killedEnemyComponent = new UserInterfaceComponent(width * 0.8, 10, "Enemies killed: " + level.getKilledEnemies());
+        scoreComponent = new UserInterfaceComponent(width * 0.8, 30, "Score: " + world.getState().getPlayerScore());
+        enemiesToKillComponent = new UserInterfaceComponent(width * 0.8, 50, "Enemies to kill: " + level.getEnemiesToKill());
+        player = new Player(new Coordinate2D(width * 0.1, getHeight() * 0.1));
         player.setWeapon((IShootable) bulletSpawner);
+
+        barricade = new Barricade(width * 0.15, world, this);
+        barricadeHealth = new UserInterfaceComponent(width * 0.2, 10, "Barricade lives remaining: " + barricade.getHealth());
+
         addEntity(player);
-        addEntity(new Barricade(getWidth() * 0.15, this.world));
+        addEntity(barricade);
+        addEntity(killedEnemyComponent.getEntity());
+        addEntity(scoreComponent.getEntity());
+        addEntity(enemiesToKillComponent.getEntity());
+        addEntity(barricadeHealth.getEntity());
     }
 
     /**
@@ -104,6 +113,7 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
     public void updateUserInterface() {
         killedEnemyComponent.updateText("Enemies killed: " + level.getKilledEnemies());
         scoreComponent.updateText("Score: " + world.getState().getPlayerScore());
+        barricadeHealth.updateText("Barricade lives remaining: " + barricade.getHealth());
     }
 
     /**
