@@ -19,7 +19,7 @@ public abstract class Enemy extends LivingEntity {
     private World world;
 
     /**
-     * Super class for all enemy types, abstracting away the moveement and the implementation of a livingEntity
+     * Super class for all enemy types, abstracting away the movement and the implementation of a livingEntity
      *
      * @param resource        The resource file that is used for the SpriteEntity
      * @param initialPosition The initial position of the Enemy
@@ -44,28 +44,9 @@ public abstract class Enemy extends LivingEntity {
         if (collider instanceof Barricade) {
             remove();
         }
-    }
 
-    /**
-     * Function which executes upon colliding with another Collider
-     *
-     * @param collider Target it collided with
-     */
-    @Override
-    public void onCollision(Collider collider) {
-        if (collider instanceof Enemy) {
-            int damage = ((Enemy) collider).getDamage();
-            removeHealth(damage);
-        }
-        if (collider instanceof Projectile) {
-            if (isDead()) {
-                world.getState().getSlainEnemies().add(this);
-                onDeath();
-            }
-        }
-        onHit(collider);
-        if (isDead()) {
-            remove();
+        if (isDead() && collider instanceof Projectile) {
+            onDeath();
         }
     }
 
@@ -74,13 +55,13 @@ public abstract class Enemy extends LivingEntity {
      */
     @Override
     public void onDeath() {
-
         int score = (int) Math.round(game.getPlayer().distanceTo(this));
 
         game.incrementPlayerScore(score);
         game.incrementKilledEnemies();
         game.updateUserInterface();
         game.checkLevelProgress();
+        world.getState().getSlainEnemies().add(this);
     }
 
     /**

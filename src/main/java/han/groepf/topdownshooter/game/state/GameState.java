@@ -22,15 +22,6 @@ public class GameState {
     }
 
     /**
-     * Returns the amount of enemies killed
-     *
-     * @return Amount of enemies killed
-     */
-    public int getKilledEnemyCount() {
-        return slainEnemies.size();
-    }
-
-    /**
      * Returns the player's score
      *
      * @return Score

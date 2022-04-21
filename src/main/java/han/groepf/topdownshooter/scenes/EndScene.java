@@ -6,6 +6,7 @@ import com.github.hanyaeger.api.scenes.StaticScene;
 import han.groepf.topdownshooter.World;
 import han.groepf.topdownshooter.game.userinterface.buttons.ExitButton;
 import han.groepf.topdownshooter.game.userinterface.buttons.SceneSwitchButton;
+import han.groepf.topdownshooter.game.userinterface.text.BasicText;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
@@ -36,23 +37,10 @@ public class EndScene extends StaticScene {
      */
     @Override
     public void setupEntities() {
-        Font font = Font.font("Roboto", FontWeight.BOLD, 30);
+        double width = getWidth();
 
-        TextEntity score = new TextEntity(new Coordinate2D(getWidth() * 0.4, getHeight() * 0.6));
-        TextEntity zombiesKilled = new TextEntity(new Coordinate2D(getWidth() * 0.4, getHeight() * 0.65));
-        TextEntity barricadeHealthLost = new TextEntity(new Coordinate2D(getWidth() * 0.4, getHeight() * 0.7));
-
-        score.setText("Score: " + world.getState().getPlayerScore());
-        zombiesKilled.setText("Zombies killed: " + world.getState().getKilledEnemyCount());
-        barricadeHealthLost.setText("Barricade health lost: 0");
-
-        score.setFont(font);
-        zombiesKilled.setFont(font);
-        barricadeHealthLost.setFont(font);
-
-        addEntity(score);
-        addEntity(zombiesKilled);
-        addEntity(barricadeHealthLost);
+        addEntity(new BasicText(new Coordinate2D(width * 0.4, width * 0.6), "Score: " + world.getState().getPlayerScore()));
+        addEntity(new BasicText(new Coordinate2D(width * 0.4, width * 0.65), "Zombies killed: " + world.getState().getSlainEnemies().size()));
         addEntity(new SceneSwitchButton(new Coordinate2D(getWidth() / 2, getHeight() * 0.5), this.world, "Game menu", 0));
         addEntity(new ExitButton(new Coordinate2D(getWidth() / 2, getHeight() * 0.55), this.world));
     }
