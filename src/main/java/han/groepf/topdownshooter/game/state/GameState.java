@@ -40,6 +40,23 @@ public class GameState {
     }
 
     /**
+     * Return the amount of enemies slain of a given type
+     * @param className The type of enemy to check for
+     * @return The amount of enemies slain of given type
+     */
+    public int getSlainTypeCount(Class className) {
+        int count = 0;
+
+        for (Enemy e: slainEnemies) {
+            if (className.isInstance(e)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    /**
      * Resets the player's score and enemy killcount
      */
     public void resetState() {
