@@ -77,7 +77,7 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
      */
     @Override
     public void setupEntitySpawners() {
-        addEntitySpawner(new EnemySpawner(getWidth(), getHeight(), this));
+        addEntitySpawner(new EnemySpawner(getWidth(), getHeight(), this, world));
         addEntitySpawner(bulletSpawner);
 
         if (world.getSettings().isPowerUpsOn()) {
@@ -129,7 +129,6 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
      * Increments the player's kill count
      */
     public void incrementKilledEnemies() {
-        world.getState().incrementKilledEnemyCount();
         level.incrementKilledEnemyCount();
     }
 }

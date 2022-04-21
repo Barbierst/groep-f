@@ -3,6 +3,7 @@ package han.groepf.topdownshooter.entities.enemies;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.Direction;
+import han.groepf.topdownshooter.World;
 import han.groepf.topdownshooter.entities.LivingEntity;
 import han.groepf.topdownshooter.entities.barricade.Barricade;
 import han.groepf.topdownshooter.projectiles.Projectile;
@@ -15,9 +16,10 @@ public abstract class Enemy extends LivingEntity {
 
     private final int damage;
     private GameScene game;
+    private World world;
 
     /**
-     * Super class for all enemy types, abstracting away the moveement and the implementation of a livingEntity
+     * Super class for all enemy types, abstracting away the movement and the implementation of a livingEntity
      *
      * @param resource        The resource file that is used for the SpriteEntity
      * @param initialPosition The initial position of the Enemy
@@ -25,10 +27,11 @@ public abstract class Enemy extends LivingEntity {
      * @param damage          Amount of damage the enemy does to the barricade
      * @param health          Amount of health the enemy has
      */
-    protected Enemy(String resource, Coordinate2D initialPosition, double speed, int damage, int health) {
+    protected Enemy(String resource, Coordinate2D initialPosition, World world, double speed, int damage, int health) {
         super(resource, initialPosition, health);
         this.damage = damage;
         setMotion(speed, Direction.LEFT);
+        this.world = world;
     }
 
     /**
@@ -41,27 +44,9 @@ public abstract class Enemy extends LivingEntity {
         if (collider instanceof Barricade) {
             remove();
         }
-    }
 
-    /**
-     * Function which executes upon colliding with another Collider
-     *
-     * @param collider Target it collided with
-     */
-    @Override
-    public void onCollision(Collider collider) {
-        if (collider instanceof Enemy) {
-            int damage = ((Enemy) collider).getDamage();
-            removeHealth(damage);
-        }
-        if (collider instanceof Projectile) {
-            if (isDead()) {
-                onDeath();
-            }
-        }
-        onHit(collider);
-        if (isDead()) {
-            remove();
+        if (isDead() && collider instanceof Projectile) {
+            onDeath();
         }
     }
 
@@ -70,13 +55,13 @@ public abstract class Enemy extends LivingEntity {
      */
     @Override
     public void onDeath() {
-
         int score = (int) Math.round(game.getPlayer().distanceTo(this));
 
         game.incrementPlayerScore(score);
         game.incrementKilledEnemies();
         game.updateUserInterface();
         game.checkLevelProgress();
+        world.getState().getSlainEnemies().add(this);
     }
 
     /**

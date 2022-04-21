@@ -5,6 +5,7 @@ import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import han.groepf.topdownshooter.entities.enemies.Enemy;
+import han.groepf.topdownshooter.projectiles.Projectile;
 
 /**
  * Used to create entities other than the player
@@ -32,16 +33,10 @@ public abstract class LivingEntity extends DynamicSpriteEntity implements Collid
      */
     @Override
     public void onCollision(Collider collider) {
-        if (collider instanceof Enemy) {
-            int damage = ((Enemy) collider).getDamage();
-            removeHealth(damage);
-        }
-
         this.onHit(collider);
 
         if (isDead()) {
             onDeath();
-            remove();
         }
     }
 
