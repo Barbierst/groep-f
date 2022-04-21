@@ -1,19 +1,16 @@
 package han.groepf.topdownshooter.game.state;
 
+import han.groepf.topdownshooter.entities.enemies.Enemy;
+
+import java.util.ArrayList;
+
 /**
  * Contains functions to retrieve and store game state
  */
 public class GameState {
 
-    private int killedEnemyCount = 0;
     private int playerScore = 0;
-
-    /**
-     * Increments the amount of killed enemies by 1
-     */
-    public void incrementKilledEnemyCount() {
-        killedEnemyCount++;
-    }
+    private ArrayList<Enemy> slainEnemies = new ArrayList<>();
 
     /**
      * Increments the player's score by the amount given
@@ -30,7 +27,7 @@ public class GameState {
      * @return Amount of enemies killed
      */
     public int getKilledEnemyCount() {
-        return killedEnemyCount;
+        return slainEnemies.size();
     }
 
     /**
@@ -43,10 +40,19 @@ public class GameState {
     }
 
     /**
+     * Return the slain enemies
+     *
+     * @return SlainEnemies
+     */
+    public ArrayList<Enemy> getSlainEnemies() {
+        return slainEnemies;
+    }
+
+    /**
      * Resets the player's score and enemy killcount
      */
     public void resetState() {
-        killedEnemyCount = 0;
+        slainEnemies.clear();
         playerScore = 0;
     }
 }

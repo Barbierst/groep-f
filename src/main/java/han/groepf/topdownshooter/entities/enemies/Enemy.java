@@ -3,6 +3,7 @@ package han.groepf.topdownshooter.entities.enemies;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.Direction;
+import han.groepf.topdownshooter.World;
 import han.groepf.topdownshooter.entities.LivingEntity;
 import han.groepf.topdownshooter.entities.barricade.Barricade;
 import han.groepf.topdownshooter.projectiles.Projectile;
@@ -15,6 +16,7 @@ public abstract class Enemy extends LivingEntity {
 
     private final int damage;
     private GameScene game;
+    private World world;
 
     /**
      * Super class for all enemy types, abstracting away the moveement and the implementation of a livingEntity
@@ -25,10 +27,11 @@ public abstract class Enemy extends LivingEntity {
      * @param damage          Amount of damage the enemy does to the barricade
      * @param health          Amount of health the enemy has
      */
-    protected Enemy(String resource, Coordinate2D initialPosition, double speed, int damage, int health) {
+    protected Enemy(String resource, Coordinate2D initialPosition, World world, double speed, int damage, int health) {
         super(resource, initialPosition, health);
         this.damage = damage;
         setMotion(speed, Direction.LEFT);
+        this.world = world;
     }
 
     /**
@@ -56,6 +59,7 @@ public abstract class Enemy extends LivingEntity {
         }
         if (collider instanceof Projectile) {
             if (isDead()) {
+                world.getState().getSlainEnemies().add(this);
                 onDeath();
             }
         }
