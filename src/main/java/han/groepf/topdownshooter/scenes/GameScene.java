@@ -101,7 +101,7 @@ public class GameScene extends DynamicScene implements EntitySpawnerContainer {
     /**
      * Checks whether the level has finished, if so it will go to the next level
      */
-    public void checkLevelProgress() {
+    public void checkLevelProgressAndProgressToNextLevel() {
         if (level.hasFinishedLevel()) {
             world.nextLevel(level.levelNumber);
         }

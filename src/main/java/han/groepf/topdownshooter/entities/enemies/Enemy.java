@@ -60,7 +60,7 @@ public abstract class Enemy extends LivingEntity {
         game.incrementPlayerScore(score);
         game.incrementKilledEnemies();
         game.updateUserInterface();
-        game.checkLevelProgress();
+        game.checkLevelProgressAndProgressToNextLevel();
         world.getState().getSlainEnemies().add(this);
     }
 

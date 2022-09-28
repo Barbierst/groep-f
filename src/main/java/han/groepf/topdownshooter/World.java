@@ -18,6 +18,10 @@ public class World extends YaegerGame {
     private final GameState state = new GameState();
     private final Settings settings = new Settings();
 
+    private static final int MENU_SCENE = 0;
+    private static final int END_SCENE = 2;
+    private static final int SETTINGS_SCENE = 3;
+
     public static void main(String[] args) {
         launch("--noSplash");
     }
@@ -30,9 +34,9 @@ public class World extends YaegerGame {
 
     @Override
     public void setupScenes() {
-        addScene(0, new MenuScene(this));
-        addScene(2, new EndScene(this));
-        addScene(3, new SettingsScene(this));
+        addScene(MENU_SCENE, new MenuScene(this));
+        addScene(END_SCENE, new EndScene(this));
+        addScene(SETTINGS_SCENE, new SettingsScene(this));
 
         for (int i = 0; i < 10; i++) {
             Level level = new Level(i, settings.getDifficulty(), state);
@@ -63,9 +67,13 @@ public class World extends YaegerGame {
      */
     public void nextLevel(int currentLevelNumber) {
         if (currentLevelNumber == 9) {
-            setActiveScene(2);
+            activateEndScene();
         }
 
         setActiveScene(10 + ++currentLevelNumber);
+    }
+
+    public void activateEndScene() {
+        setActiveScene(END_SCENE);
     }
 }

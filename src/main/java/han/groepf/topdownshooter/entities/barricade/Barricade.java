@@ -58,6 +58,6 @@ public class Barricade extends LivingEntity {
      */
     @Override
     public void onDeath() {
-        world.setActiveScene(2);
+        world.activateEndScene();
     }
 }
